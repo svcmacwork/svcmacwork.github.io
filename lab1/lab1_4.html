@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Изображения и их атрибуты</title>
+</head>
+<body>
+    <section class="center">
+        <h1>Изображения и их атрибуты</h1>
+
+        <h2>Элемент <code>img</code> с атрибутом <code>alt</code></h2>
+        <figure>
+            <img src="/lab1/images/image1.jpg" alt="Пример изображения с альтернативным текстом">
+            <figcaption>Рисунок 1: Изображение с атрибутом <code>alt</code>, который предоставляет описание изображения.</figcaption>
+        </figure>
+
+        <h2>Элемент <code>img</code> с атрибутами <code>width</code> и <code>height</code></h2>
+        <figure>
+            <img src="/lab1/images/image2.gif" alt="Пример изображения с заданными размерами" width="300" height="200">
+            <figcaption>Рисунок 2: Изображение с заданными шириной и высотой с помощью атрибутов <code>width</code> и <code>height</code>.</figcaption>
+        </figure>
+
+        <h2>Элемент <code>img</code> с атрибутами <code>srcset</code> и <code>sizes</code></h2>
+        <figure>
+            <img src="/lab1/images/image3.jpg" 
+                srcset="/lab1/images/image3.jpg 1080w" 
+                sizes="(max-width: 600px) 480px, 800px" 
+                alt="Пример гибкого изображения">
+            <figcaption>Рисунок 3: Гибкое изображение с использованием атрибутов <code>srcset</code> и <code>sizes</code> для адаптации под разные размеры экрана.</figcaption>
+        </figure>
+
+        <h2>Элемент <code>picture</code> с несколькими источниками</h2>
+        <figure>
+            <picture>
+                <source media="(max-width: 600px)" srcset="/lab1/images/image4.png">
+                <source media="(min-width: 601px)" srcset="/lab1/images/image4.png">
+                <img src="/lab1/images/image4.png" alt="Пример использования элемента picture">
+            </picture>
+            <figcaption>Рисунок 4: Использование элемента <code>picture</code> для выбора оптимального изображения в зависимости от размера экрана.</figcaption>
+        </figure>
+    </section>
+</body>
+</html>

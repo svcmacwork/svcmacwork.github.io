@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Изображение с кликабельными областями</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        img {
+            border: 1px solid #ccc;
+            max-width: 100%;
+            height: auto;
+        }
+        .map-container {
+            margin: 20px auto;
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Изображение с кликабельными областями</h1>
+    <div class="map-container">
+        <img src="/lab1/example-image.jpg" alt="Пример изображения с кликабельными областями" usemap="#taskmap">
+        <map name="taskmap">
+            <area target="" alt="" title="" href="lab1_1.html" coords="15,3,111,32" shape="rect">
+            <area target="" alt="" title="" href="lab1_2.html" coords="206,32,116,4" shape="rect">
+            <area target="" alt="" title="" href="lab1_3.html" coords="210,5,297,31" shape="rect">
+            <area target="" alt="" title="" href="lab1_4.html" coords="301,5,390,30" shape="rect">
+        </map>
+    </div>
+
+    <p>Нажмите на разные области изображения, чтобы перейти к выполненным заданиям.</p>
+</body>
+</html>
