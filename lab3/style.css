@@ -1,0 +1,39 @@
+body {
+    background-color: black; 
+    color: white; 
+    font-size: 1.5rem; 
+    line-height: 2rem; 
+    margin: 0; 
+    padding: 0; 
+}
+
+
+p {
+    text-align: right;
+}
+
+h1, h2 {
+    text-align: right; 
+    font-family: Arial, sans-serif; 
+    color: red; 
+}
+
+em {
+    color: green; 
+}
+
+.wrapper {
+    max-width: 960px; 
+    margin-left: auto; 
+    margin-right: auto; 
+    padding-left: 10px; 
+    padding-right: 10px;
+}
+
+q {
+    font-style: italic;
+}
+
+strong, b {
+    font-weight: bold;
+}
