@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <title>Сумма чисел</title>
+    <script src="lab2.js"></script>
+  </head>
+  <body>
+    <h1>Сумма чисел от 1 до n</h1>
+    <p>Введите число n:</p>
+    <form id="sumForm">
+      <input type="number" id="number" placeholder="Число n" required />
+      <button type="submit">Вычислить сумму</button>
+    </form>
+    <p id="result"></p>
+
+    <script>
+      document.getElementById("sumForm").onsubmit = function (event) {
+        event.preventDefault();
+        const n = parseInt(document.getElementById("number").value);
+        const result = sumTo(n);
+        document.getElementById(
+          "result"
+        ).textContent = `Сумма чисел от 1 до ${n} = ${result}`;
+      };
+    </script>
+  </body>
+</html>
