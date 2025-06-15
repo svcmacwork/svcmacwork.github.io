@@ -1,101 +1,101 @@
+'use strict';
+
+import {
+    fib
+  } from './fib.js';
+
 /**
  * Возвращает дробную часть числа.
- * @param {number} num - Число, из которого нужно извлечь дробную часть.
- * @returns {number} Дробная часть числа (в диапазоне [0, 1)).
+ * @param {number} num - Число.
+ * @returns {number} Дробная часть числа.
  */
 export function getDecimal(num) {
-    const decimal = Math.abs(num) - Math.floor(Math.abs(num));
-    return parseFloat((num < 0 ? 1 - decimal : decimal).toFixed(10));
+
+    return +(num >= 0 ? num % 1 : 1 + (num % 1)).toFixed(2);
 }
 
+
 /**
- * Нормализует URL, добавляя 'https://' в начале, если его нет.
- * @param {string} url - URL для нормализации.
- * @returns {string} Нормализованный URL с 'https://'.
+ * Нормализует URL, добавляя префикс https://.
+ * @param {string} url - Адрес сайта.
+ * @returns {string} Нормализованный URL.
  */
 export function normalizeUrl(url) {
-    if (url.startsWith('http://')) {
-        return 'https://' + url.slice(7);
-    }
-    if (url.startsWith('https://')) {
-        return url;
-    }
-    return 'https://' + url;
+    if (!url.startsWith("http://") && !url.startsWith("https://"))
+        return "https://" + url;
+
+    return url.replace("http://", "https://");
 }
 
+
 /**
- * Проверяет строку на наличие подстрок 'viagra' или 'XXX' (без учёта регистра).
- * @param {string} str - Строка для проверки.
- * @returns {boolean} true, если найдены запрещённые подстроки, иначе false.
+ * Проверяет наличие спама в строке.
+ * @param {string} str - Входная строка.
+ * @returns {boolean} true, если строка содержит спам, иначе false.
  */
 export function checkSpam(str) {
     const lowerStr = str.toLowerCase();
     return lowerStr.includes('viagra') || lowerStr.includes('xxx');
 }
 
+
 /**
- * Усекает строку до указанной длины, добавляя многоточие при необходимости.
- * @param {string} str - Строка для усечения.
+ * Усекает строку до указанной длины и добавляет многоточие, если необходимо.
+ * @param {string} str - Входная строка.
  * @param {number} maxlength - Максимальная длина строки.
- * @returns {string} Усечённая строка.
+ * @returns {string} Усеченная строка.
  */
 export function truncate(str, maxlength) {
-    if (str.length <= maxlength) {
-        return str;
-    }
-    return str.slice(0, maxlength - 1) + '…';
+    if (str.length > maxlength)
+        return str.slice(0, maxlength - 1) + "…";
+
+    return str;
 }
 
 /**
- * Преобразует строку с дефисами в camelCase.
- * @param {string} str - Строка для преобразования.
- * @returns {string} Строка в camelCase.
+ * Преобразует строку вида 'var-test-text' в 'varTestText'.
+ * @param {string} str - Входная строка.
+ * @returns {string} Преобразованная строка.
  */
 export function camelize(str) {
-    return str.split('-')
-        .map((word, index) => index === 0 ? word : ucFirst(word))
-        .join('');
+    return str.split('-').map((word, index) => {
+        if (index === 0)
+            return word;
+
+        return word ? word[0].toUpperCase() + word.slice(1) : '';
+    }).join('');
 }
 
 /**
- * Преобразует первую букву строки в верхний регистр.
- * @param {string} str - Строка для преобразования.
- * @returns {string} Строка с первой заглавной буквой.
- */
-function ucFirst(str) {
-    if (!str) return str;
-    return str[0].toUpperCase() + str.slice(1);
-}
-
-import {fib} from './lab2.js';
-/**
- * Возвращает массив чисел Фибоначчи до n-го (не включая его).
- * @param {number} n - Количество чисел Фибоначчи.
- * @returns {bigint[]} Массив чисел Фибоначчи.
+ * Возвращает массив чисел Фибоначчи до указанного числа n.
+ * @param {number} n - Число Фибоначчи.
+ * @returns {Array<BigInt>} Массив чисел Фибоначчи.
  */
 export function fibs(n) {
-    const result = [];
-    for (let i = 0; i < n; i++) {
-        result.push(fib(i));
-    }
-    return result;
+    let arr = [];
+    for (let i = 0; i < n; i++) arr.push(fib(i));
+    return arr;
 }
 
 
 /**
- * Возвращает новый массив, отсортированный по убыванию.
- * @param {number[]} arr - Массив чисел для сортировки.
- * @returns {number[]} Новый массив, отсортированный по убыванию.
+ * Возвращает массив, отсортированный по убыванию.
+ * @param {Array<number>} arr - Входной массив.
+ * @returns {Array<number>} Отсортированный массив по убыванию.
  */
 export function arrReverseSorted(arr) {
-    return [...arr].sort((a, b) => b - a);
+    return arr.slice().sort((a, b) => b - a);
 }
+
 
 /**
  * Возвращает массив уникальных значений.
- * @param {Array} arr - Массив с повторяющимися значениями.
- * @returns {Array} Массив уникальных значений.
+ * @template T
+ * @param {Array<T>} arr - Входной массив.
+ * @returns {Array<T>} Массив уникальных значений.
  */
 export function unique(arr) {
     return [...new Set(arr)];
 }
+
+//module.exports = { getDecimal, normalizeUrl, checkSpam, truncate, camelize, fibs, arrReverseSorted, unique };
