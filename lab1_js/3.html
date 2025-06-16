@@ -12,30 +12,37 @@
             padding: 20px;
             text-align: center;
         }
-        a {
+        form {
             display: inline-block;
             margin-top: 20px;
+        }
+        button {
             padding: 10px 20px;
             background-color: #4CAF50;
             color: white;
             text-decoration: none;
+            border: none;
             border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
         }
-        a:hover {
+        button:hover {
             background-color: #45a049;
         }
     </style>
 </head>
 <body>
     <h1>Ввод числа</h1>
-    <p>Нажмите на ссылку ниже, чтобы перейти на главную страницу</p>
+    <p>Нажмите на кнопку ниже, чтобы ввести число</p>
     
-    <a href="https://example.com" id="mainLink">Получить число</a>
+    <form id="numberForm">
+        <button type="submit">Получить число</button>
+    </form>
 
     <script>
         'use strict';
         
-        document.getElementById('mainLink').addEventListener('click', function(event) {
+        document.getElementById('numberForm').addEventListener('submit', function(event) {
             event.preventDefault();
             
             function askNumber() {
@@ -59,12 +66,12 @@
             const numberEntered = askNumber();
             
             if (numberEntered) {
-                window.location.href = this.href;
+                window.location.href = 'https://example.com';
             } else {
                 const confirmTransition = confirm('Вы не ввели число. Все равно перейти на главную страницу?');
                 
                 if (confirmTransition) {
-                    window.location.href = this.href;
+                    window.location.href = 'https://example.com';
                 }
             }
         });

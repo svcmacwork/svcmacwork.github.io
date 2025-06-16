@@ -71,7 +71,7 @@
             </div>
         </div>
         
-        <button type="button" id="calculateBtn">Рассчитать</button>
+        <button type="submit">Рассчитать</button>
         
         <div>
             <label for="result">Результат:</label>
@@ -82,7 +82,9 @@
     <script>
         'use strict';
         
-        document.getElementById('calculateBtn').addEventListener('click', function() {
+        document.getElementById('pensionForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
             const ageInput = document.getElementById('age');
             const resultTextarea = document.getElementById('result');
             const gender = document.querySelector('input[name="gender"]:checked').value;

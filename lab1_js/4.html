@@ -22,6 +22,9 @@
             padding: 20px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
+        form {
+            margin-bottom: 20px;
+        }
         label {
             display: block;
             margin-bottom: 8px;
@@ -72,10 +75,11 @@
     <div class="container">
         <h1>Поиск простых чисел</h1>
         
-        <label for="numberInput">Введите число n (больше 1):</label>
-        <input type="number" id="numberInput" min="2" required>
-        
-        <button id="findButton">Найти простые числа</button>
+        <form id="primeForm">
+            <label for="numberInput">Введите число n (больше 1):</label>
+            <input type="number" id="numberInput" name="number" min="2" required>
+            <button type="submit">Найти простые числа</button>
+        </form>
         
         <div id="result"></div>
     </div>
@@ -83,7 +87,9 @@
     <script>
         'use strict';
         
-        document.getElementById('findButton').addEventListener('click', function() {
+        document.getElementById('primeForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
             const input = document.getElementById('numberInput');
             const resultDiv = document.getElementById('result');
             
@@ -142,18 +148,6 @@
             }
             
             return primes;
-        }
-        
-        function isPrime(num) {
-            if (num <= 1) return false;
-            if (num === 2) return true;
-            if (num % 2 === 0) return false;
-            
-            for (let i = 3; i <= Math.sqrt(num); i += 2) {
-                if (num % i === 0) return false;
-            }
-            
-            return true;
         }
     </script>
 </body>

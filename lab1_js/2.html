@@ -44,13 +44,15 @@
             <input type="number" id="num" name="num" min="0" required>
         </div>
         
-        <button type="button" id="countBtn">Считать</button>
+        <button type="submit">Считать</button>
     </form>
 
     <script>
         'use strict';
         
-        document.getElementById('countBtn').addEventListener('click', function() {
+        document.getElementById('crowForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
             const numInput = document.getElementById('num');
             
             if (!numInput.value) {
